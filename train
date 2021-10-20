@@ -1,0 +1,15 @@
+#!/bin/bash
+
+set -eou pipefail
+
+fairseq-train \
+    data/data-bin \
+    --source-lang ice.g \
+    --target-lang ice.p \
+    --seed 19 \
+    --log-file data/logs/train.log \
+    --arch lstm
+    
+    # Set model output directory to models
+    --save-dir models
+

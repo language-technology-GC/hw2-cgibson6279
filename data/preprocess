@@ -1,0 +1,13 @@
+#!/bin/bash
+
+set -eou pipefail
+
+fairseq-preprocess \
+    --source-lang ice.g \
+    --target-lang ice.p \
+    --trainpref processed/train \
+    --validpref processed/dev \
+    --testpref processed/test \
+    --tokenizer space \
+    --thresholdsrc 2 \
+    --thresholdtgt 2
