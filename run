@@ -1,0 +1,37 @@
+#!/bin/bash
+
+set -eou pipefail
+
+# Preprocess Files
+echo "Preprocessing files..."
+
+# Make dev files
+echo "Making dev files..."
+./src/preprocess_text.py data/raw/ice_dev.tsv \
+data/processed/dev.ice.g data/processed/dev.ice.p
+
+# Make train files
+echo "Making train files..."
+./src/preprocess_text.py data/raw/ice_train.tsv \
+data/processed/train.ice.g data/processed/train.ice.p
+
+# Make test files
+echo "Making test files..."
+./src/preprocess_text.py data/raw/ice_test.tsv \
+data/processed/test.ice.g data/processed/test.ice.p
+
+# Fairseq Preprocess
+echo "Preprocessing files..."
+time ./data/preprocess
+
+# Train Model
+echo "Training LSTM..."
+time ./data/train_lstm
+
+# Evaluate Model
+echo "Evaluating LSTM..."
+export PREDS=data/predictions.txt
+time ./logging/eval_lstm
+
+# Log WER for Model
+./src/get_wer.py

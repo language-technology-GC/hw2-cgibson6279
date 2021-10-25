@@ -1,0 +1,26 @@
+#!/bin/bash
+
+set -eou pipefail
+
+fairseq-train \
+    data-bin \
+    --source-lang ice.g \
+    --target-lang ice.p \
+    --seed 19 \
+    --arch lstm \
+    --batch-size 50 \
+    --optimizer adam \
+    --criterion label_smoothed_cross_entropy \
+    --lr .001 \
+    --dropout .2 \
+    --max-update 800 \
+    --no-epoch-checkpoints \
+    --clip-norm 1 \
+    --encoder-embed-dim 128 \
+    --encoder-hidden-size 512 \
+    --decoder-embed-dim 128 \
+    --decoder-hidden-size 512 \
+    --encoder-bidirectional \
+    --decoder-out-embed-dim 128 \
+    --label-smoothing .1
+

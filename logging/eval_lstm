@@ -1,0 +1,11 @@
+#!/bin/bash
+
+fairseq-generate \
+    data-bin \
+    --source-lang ice.g \
+    --target-lang ice.p \
+    --path checkpoints/checkpoint_best.pt \
+    --gen-subset test \
+    --scoring wer \
+    --beam 8 \
+    > predictions.txt
