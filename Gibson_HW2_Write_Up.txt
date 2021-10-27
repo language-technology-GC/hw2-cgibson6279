@@ -1,0 +1,14 @@
+This assignment was pretty straight forward. The only challenges for this assignment was that some of the documentation was outdated,
+so you had to go to the docs in the github repo to find some of the flags that were necessary to run fairseq-train. I wrote scripts to 
+process the data into the `data\processed` directory. I wrote bash scripts to run those and smaller bash scripts to run the fair-seq command line 
+methods. Finally I wrote a py script that calculates and writes the WER score to a log in logging.  
+
+I'm not sure if the formatting for those files is good,or whether it's appropriate to run bash scripts that run other bash scripts. 
+I'm also not terribly happy with the organization of my repo, and in the future I would like to be able to produce industry standard organized repos. 
+Specifically, I wasn't sure how to output files from thefairseq methods to a specific directory. I found that when running the `run` bash script, 
+all files from other bash scripts were output to the same directory as the `run` script, but when running other bash scripts individually 
+the output was written to the directory those bash scripts were in. So, I really need to work on cleaning up my code formatting and directory formatting. 
+I'm also not sure for the writing so much code inside the name guard in `get_wer.py` is an appropriate thing to do. I also wanted to get to the stretch goals and work on finding a way 
+to implement a full package that would allow a user to choose whether they want to train a LSTM or transformer, but I didn't have time. 
+So overall, I didn't find the implementation difficult, but I'd very much like to increase my knowledge of industry standard coding principles
+and to clean up my code and repo production. 
